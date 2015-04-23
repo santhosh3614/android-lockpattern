@@ -17,12 +17,16 @@
 
 <resources>
 
+    <!-- THEME DARK -->
+
     <style name="Alp.42447968.BaseTheme.Dark" parent="@android:style/Theme.Holo" />
 
     <style name="Alp.42447968.BaseThemeHelper.Dark" parent="@style/Alp.42447968.BaseTheme.Dark">
         <item name="alp_42447968_button_bar_style">?android:attr/buttonBarStyle</item>
         <item name="alp_42447968_button_bar_button_style">?android:attr/buttonBarButtonStyle</item>
     </style>
+
+    <!-- THEME LIGHT -->
 
     <style name="Alp.42447968.BaseTheme.Light" parent="@android:style/Theme.Holo.Light" />
 
@@ -31,12 +35,16 @@
         <item name="alp_42447968_button_bar_button_style">?android:attr/buttonBarButtonStyle</item>
     </style>
 
+    <!-- THEME LIGHT, DARK ACTION BAR -->
+
     <style name="Alp.42447968.BaseTheme.Light.DarkActionBar" parent="@android:style/Theme.Holo.Light" />
 
     <style name="Alp.42447968.BaseThemeHelper.Light.DarkActionBar" parent="@style/Alp.42447968.BaseTheme.Light.DarkActionBar">
         <item name="alp_42447968_button_bar_style">?android:attr/buttonBarStyle</item>
         <item name="alp_42447968_button_bar_button_style">?android:attr/buttonBarButtonStyle</item>
     </style>
+
+    <!-- THEME DIALOG DARK -->
 
     <style name="Alp.42447968.BaseTheme.Dialog.Dark" parent="@android:style/Theme.Holo.Dialog" />
 
@@ -45,9 +53,29 @@
         <item name="alp_42447968_button_bar_button_style">?android:attr/buttonBarButtonStyle</item>
     </style>
 
+    <!-- THEME DIALOG LIGHT -->
+
     <style name="Alp.42447968.BaseTheme.Dialog.Light" parent="@android:style/Theme.Holo.Light.Dialog" />
 
     <style name="Alp.42447968.BaseThemeHelper.Dialog.Light" parent="@style/Alp.42447968.BaseTheme.Dialog.Light">
+        <item name="alp_42447968_button_bar_style">?android:attr/buttonBarStyle</item>
+        <item name="alp_42447968_button_bar_button_style">?android:attr/buttonBarButtonStyle</item>
+    </style>
+
+    <!-- THEME DIALOG WHEN LARGE, LIGHT -->
+
+    <style name="Alp.42447968.BaseTheme.DialogWhenLarge.Light" parent="@android:style/Theme.Holo.Light.DialogWhenLarge"></style>
+
+    <style name="Alp.42447968.BaseThemeHelper.DialogWhenLarge.Light" parent="@style/Alp.42447968.BaseTheme.DialogWhenLarge.Light">
+        <item name="alp_42447968_button_bar_style">?android:attr/buttonBarStyle</item>
+        <item name="alp_42447968_button_bar_button_style">?android:attr/buttonBarButtonStyle</item>
+    </style>
+
+    <!-- THEME DIALOG WHEN LARGE, DARK -->
+
+    <style name="Alp.42447968.BaseTheme.DialogWhenLarge.Dark" parent="@android:style/Theme.Holo.DialogWhenLarge"></style>
+
+    <style name="Alp.42447968.BaseThemeHelper.DialogWhenLarge.Dark" parent="@style/Alp.42447968.BaseTheme.DialogWhenLarge.Dark">
         <item name="alp_42447968_button_bar_style">?android:attr/buttonBarStyle</item>
         <item name="alp_42447968_button_bar_button_style">?android:attr/buttonBarButtonStyle</item>
     </style>

@@ -17,14 +17,32 @@
 
 <resources>
 
+    <!-- THEME DARK -->
+
     <style name="Alp.42447968.BaseTheme.Dark" parent="@android:style/Theme.Material" />
 
-    <style name="Alp.42447968.BaseTheme.Dialog.Dark" parent="@android:style/Theme.Material.Dialog" />
+    <!-- THEME LIGHT -->
 
     <style name="Alp.42447968.BaseTheme.Light" parent="@android:style/Theme.Material.Light" />
 
+    <!-- THEME LIGHT, DARK ACTION BAR -->
+
     <style name="Alp.42447968.BaseTheme.Light.DarkActionBar" parent="@android:style/Theme.Material.Light.DarkActionBar" />
 
+    <!-- THEME DIALOG DARK -->
+
+    <style name="Alp.42447968.BaseTheme.Dialog.Dark" parent="@android:style/Theme.Material.Dialog" />
+
+    <!-- THEME DIALOG LIGHT -->
+
     <style name="Alp.42447968.BaseTheme.Dialog.Light" parent="@android:style/Theme.Material.Light.Dialog" />
+
+    <!-- THEME DIALOG WHEN LARGE, LIGHT -->
+
+    <style name="Alp.42447968.BaseTheme.DialogWhenLarge.Light" parent="@android:style/Theme.Material.Light.DialogWhenLarge"></style>
+
+    <!-- THEME DIALOG WHEN LARGE, DARK -->
+
+    <style name="Alp.42447968.BaseTheme.DialogWhenLarge.Dark" parent="@android:style/Theme.Material.DialogWhenLarge"></style>
 
 </resources>
