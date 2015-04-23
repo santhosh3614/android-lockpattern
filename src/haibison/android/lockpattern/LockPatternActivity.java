@@ -129,11 +129,12 @@ public class LockPatternActivity extends Activity {
     /**
      * This method is a shortcut to call
      * {@link #newIntentToCreatePattern(Context)} from a UI thread.
-     *
+     * 
      * @param caller
      *            must be an instance of {@link Activity}, or {@link Fragment}
-     *            or support library's {@code Fragment}. Other values will be
-     *            ignored.
+     *            or support library's {@code Fragment}. <b>Warning:</b> Have a
+     *            look at description of
+     *            {@link #callStartActivityForResult(Object, Intent, int)}.
      * @param context
      *            the context.
      * @param requestCode
@@ -152,9 +153,15 @@ public class LockPatternActivity extends Activity {
     }// startToCreatePattern()
 
     /**
-     * Calls {@code startActivityForResult(Intent, int)} from given caller,
-     * ignores any exception.
-     *
+     * This methods first tries to find and call
+     * {@code startActivityForResult(Intent, int)} from given caller.
+     * <p/>
+     * <b>WARNING:</b> If this method can't find above method from the caller,
+     * it will try to find <b><i>any</i></b> method which accepts 2 parameters
+     * as an {@link Intent} and an {@code int}, then invokes that method with
+     * given parameters. So be careful to just pass in only an instance of
+     * {@link Activity}/{@link Fragment} or support library's {@code Fragment}.
+     * 
      * @param caller
      *            the caller.
      * @param intent
@@ -163,6 +170,9 @@ public class LockPatternActivity extends Activity {
      *            request code.
      * @throws NullPointerException
      *             if caller or intent is {@code null}.
+     * @throws RuntimeException
+     *             which wraps any exception while invoking original method from
+     *             the caller.
      * @return {@code true} if the call has been made successfully,
      *         {@code false} if any exception occurred.
      */
@@ -175,13 +185,37 @@ public class LockPatternActivity extends Activity {
             method.invoke(caller, intent, requestCode);
 
             return true;
-        } catch (Exception e) {
+        } catch (NoSuchMethodException e) {
             /*
-             * Just log it. We don't need to go to details here, as it's
-             * responsibility of user to take care of caller.
+             * Perhaps ProGuard or something similar changed the method name. So
+             * we'll do it a little harder to find the method based on
+             * parameters types.
              */
-            if (DEBUG)
-                Log.d(CLASSNAME, e.getMessage(), e);
+            Method[] methods = caller.getClass().getMethods();
+            for (Method method : methods) {
+                Class<?>[] types = method.getParameterTypes();
+                if (types.length == 2
+                        && types[0].isAssignableFrom(Intent.class)
+                        && types[1].isAssignableFrom(int.class)) {
+                    method.setAccessible(true);
+                    try {
+                        method.invoke(caller, intent, requestCode);
+                        return true;
+                    } catch (Throwable t) {
+                        Log.e(CLASSNAME, t.getMessage(), t);
+                        /*
+                         * Just re-throw it
+                         */
+                        throw new RuntimeException(t);
+                    }
+                }// if
+            }// for
+        } catch (Throwable t) {
+            Log.e(CLASSNAME, t.getMessage(), t);
+            /*
+             * Just re-throw it
+             */
+            throw new RuntimeException(t);
         }
 
         return false;
@@ -244,8 +278,9 @@ public class LockPatternActivity extends Activity {
      *
      * @param caller
      *            must be an instance of {@link Activity}, or {@link Fragment}
-     *            or support library's {@code Fragment}. Other values will be
-     *            ignored.
+     *            or support library's {@code Fragment}. <b>Warning:</b> Have a
+     *            look at description of
+     *            {@link #callStartActivityForResult(Object, Intent, int)}.
      * @param context
      *            the context.
      * @param requestCode
@@ -298,8 +333,9 @@ public class LockPatternActivity extends Activity {
      *
      * @param caller
      *            must be an instance of {@link Activity}, or {@link Fragment}
-     *            or support library's {@code Fragment}. Other values will be
-     *            ignored.
+     *            or support library's {@code Fragment}. <b>Warning:</b> Have a
+     *            look at description of
+     *            {@link #callStartActivityForResult(Object, Intent, int)}.
      * @param context
      *            the context.
      * @param requestCode
@@ -528,7 +564,7 @@ public class LockPatternActivity extends Activity {
     public boolean onTouchEvent(MotionEvent event) {
         /*
          * Support canceling dialog on touching outside in APIs < 11.
-         *
+         * 
          * This piece of code is copied from android.view.Window. You can find
          * it by searching for methods shouldCloseOnTouch() and isOutOfBounds().
          */
