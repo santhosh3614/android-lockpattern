@@ -21,7 +21,10 @@
 
     <style name="Alp_42447968"></style>
 
-    <style name="Alp_42447968.BaseThemeResources" parent="@style/Alp_42447968"></style>
+    <style name="Alp_42447968.BaseThemeResources" parent="@style/Alp_42447968">
+        <item name="alp_42447968_button_bar_style">@null</item>
+        <item name="alp_42447968_button_bar_button_style">@null</item>
+    </style>
 
     <!-- THEME RESOURCES DARK -->
 
@@ -214,9 +217,6 @@
         <!-- The success color -->
         <attr name="successColor" format="color|reference" />
     </declare-styleable>
-
-    <item name="alp_42447968_button_bar_style" type="style">@null</item>
-    <item name="alp_42447968_button_bar_button_style" type="style">@null</item>
 
     <attr name="alp_42447968_button_bar_style" format="reference" />
     <attr name="alp_42447968_button_bar_button_style" format="reference" />
