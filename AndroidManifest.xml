@@ -27,7 +27,7 @@
             android:excludeFromRecents="true"
             android:exported="false"
             android:screenOrientation="user"
-            android:theme="@style/Alp.42447968.Theme.Light" />
+            android:theme="@style/Alp_42447968.Theme.Light" />
     </application>
 
 </manifest>

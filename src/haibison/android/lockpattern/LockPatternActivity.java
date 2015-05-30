@@ -30,6 +30,7 @@ import haibison.android.lockpattern.util.AlpSettings.Security;
 import haibison.android.lockpattern.util.IEncrypter;
 import haibison.android.lockpattern.util.InvalidEncrypterException;
 import haibison.android.lockpattern.util.LoadingView;
+import haibison.android.lockpattern.util.ResourceUtils;
 import haibison.android.lockpattern.util.UI;
 import haibison.android.lockpattern.widget.LockPatternUtils;
 import haibison.android.lockpattern.widget.LockPatternView;
@@ -516,10 +517,20 @@ public class LockPatternActivity extends Activity {
         /*
          * EXTRA_THEME
          */
-
         if (getIntent().hasExtra(EXTRA_THEME))
             setTheme(getIntent().getIntExtra(EXTRA_THEME,
                     R.style.Alp_42447968_Theme_Dark));
+
+        /*
+         * Apply theme resources
+         */
+        final int resThemeResources = ResourceUtils.resolveAttribute(this,
+                R.attr.alp_42447968_theme_resources);
+        if (resThemeResources == 0)
+            throw new RuntimeException(
+                    "Please provide theme resource via attribute `alp_42447968_theme_resources`."
+                            + " For example: <item name=\"alp_42447968_theme_resources\">@style/Alp_42447968.ThemeResources.Light</item>");
+        getTheme().applyStyle(resThemeResources, true);
 
         super.onCreate(savedInstanceState);
 
