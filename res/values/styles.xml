@@ -192,7 +192,7 @@
         <item name="alp_42447968_theme_resources">@style/Alp_42447968.ThemeResources.Dark</item>
     </style>
 
-    <style name="Alp_42447968.AOSP_DialogWindowTitle" parent="">
+    <style name="Alp_42447968.AOSP_DialogWindowTitle" parent="@style/Alp_42447968">
         <item name="android:maxLines">1</item>
         <item name="android:scrollHorizontally">true</item>
         <item name="android:textAppearance">@android:style/TextAppearance.DialogWindowTitle</item>
