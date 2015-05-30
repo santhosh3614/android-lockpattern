@@ -20,6 +20,8 @@
 
     <uses-sdk android:minSdkVersion="7" />
 
+    <!-- SAMPLE DECLARATION -->
+    <!--
     <application>
         <activity
             android:name="haibison.android.lockpattern.LockPatternActivity"
@@ -29,5 +31,6 @@
             android:screenOrientation="user"
             android:theme="@style/Alp_42447968.Theme.Light" />
     </application>
+    -->
 
 </manifest>
