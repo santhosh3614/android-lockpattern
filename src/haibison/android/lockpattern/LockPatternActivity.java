@@ -530,7 +530,7 @@ public class LockPatternActivity extends Activity {
             throw new RuntimeException(
                     "Please provide theme resource via attribute `alp_42447968_theme_resources`."
                             + " For example: <item name=\"alp_42447968_theme_resources\">@style/Alp_42447968.ThemeResources.Light</item>");
-        getTheme().applyStyle(resThemeResources, true);
+        getTheme().applyStyle(resThemeResources, false);
 
         super.onCreate(savedInstanceState);
 
